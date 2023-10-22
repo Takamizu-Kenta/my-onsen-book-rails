@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  my-onsen-book-db:
+    image: mysql:8.0
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sample
+      MYSQL_PASSWORD: password
+    ports:
+      - 4306:3306
+    volumes:
+      - mysql-db:/var/lib/mysql
+
+  my-onsen-book-rails:
+    tty: true
+    depends_on:
+      - my-onsen-book-db
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    command: rails server -b 0.0.0.0
+
+volumes:
+  mysql-db:
+    driver: local
