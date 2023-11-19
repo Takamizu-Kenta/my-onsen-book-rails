@@ -4,6 +4,7 @@ services:
   my-onsen-book-db:
     image: mysql:8.0
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    container_name: my-onsen-book-db
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: my_onsen_book_development
@@ -12,6 +13,8 @@ services:
       - 4306:3306
     volumes:
       - mysql-db:/var/lib/mysql
+    networks:
+      - my_onsen_book_network
 
   my-onsen-book-rails:
     tty: true
@@ -27,7 +30,12 @@ services:
     volumes:
       - ./:/app
     command: rails server -b 0.0.0.0
+    networks:
+      - my_onsen_book_network
 
 volumes:
   mysql-db:
     driver: local
+networks:
+  my_onsen_book_network:
+    external: true
