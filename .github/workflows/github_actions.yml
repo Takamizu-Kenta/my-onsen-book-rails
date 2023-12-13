@@ -30,7 +30,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           rubocop_version: gemfile
-          rubocop_flags: '--config /my-onsen-book-rails/rubocop.yml'
+          # rubocop_flags: '--config /my-onsen-book-rails/rubocop.yml'
           rubocop_extensions: rubocop-performance:gemfile rubocop-rails:gemfile
           reporter: github-pr-review
           filter_mode: diff_context
