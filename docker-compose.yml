@@ -28,8 +28,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./:/app
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      - .:/my-onsen-book-rails
+    command: bash -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     networks:
       - my_onsen_book_network
 
