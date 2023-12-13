@@ -1,26 +1,76 @@
 # frozen_string_literal: true
 
-create_table "users", force: :cascade do |t|
+create_table "users", id: :bigint, force: :cascade do |t|
+  t.string   "name", null: false
   t.string   "email", null: false
   t.string   "password_digest", null: false
   t.timestamps
 end
 
-create_table "onsens", force: :cascade do |t|
-  t.string   "jalan_onsen_id", null: false
+create_table "admins", id: :bigint, force: :cascade do |t|
   t.string   "name", null: false
-  t.string   "location"
-  t.text     "description"
+  t.string   "email", null: false
+  t.string   "password_digest", null: false
   t.timestamps
 end
 
-create_table "favorites", force: :cascade do |t|
+create_table "facilities", id: :bigint, force: :cascade do |t|
+  t.bigint   "onsen_id"
+  t.string   "facility_name", null: false, comment: "施設名"
+  t.string   "facility_type", null: false, comment: "施設種別"
+  t.string   "post_code", null: false, comment: "郵便番号"
+  t.string   "pref", null: false, comment: "都道府県"
+  t.string   "city", null: false, comment: "市町村"
+  t.string   "address", null: false, comment: "住所"
+  t.string   "facility_url", comment: "施設URL"
+  t.text     "description", comment: "説明"
+  t.timestamps
+end
+
+create_table "onsens", id: :bigint, force: :cascade do |t|
+  t.string   "str_key", null: false, comment: "温泉コード"
+  t.string   "pref", null: false, comment: "都道府県"
+  t.string   "onsen_name", null: false, comment: "温泉名"
+  t.string   "onsen_name_kana", null: false, comment: "温泉名かな"
+  t.string   "quality", null: false, comment: "泉質"
+  t.string   "effects", null: false, comment: "効能"
+  t.string   "onsen_area_name", comment: "温泉地名(温泉郷)"
+  t.string   "onsen_area_name_kana", comment: "温泉地名カナ"
+  t.string   "onsen_area_image", comment: "温泉地画像"
+  t.string   "onsen_url", comment: "温泉URL"
+  t.text     "description", null: false, comment: "説明"
+  t.timestamps
+end
+
+create_table "onsen_areas", id: :bigint, force: :cascade do |t|
+  t.string   "str_key", null: false, comment: "温泉地コード"
+  t.string   "pref", null: false, comment: "都道府県"
+  t.string   "city", null: false, comment: "市町村"
+  t.string   "area_type", null: false, comment: "タイプ"
+  t.string   "quality", null: false, comment: "主な泉質"
+  t.string   "onsen_area_name", comment: "名前"
+  t.string   "onsen_area_name_kana", comment: "名前かな"
+  t.string   "onsen_area_url", comment: "温泉URL"
+  t.text     "description", null: false, comment: "説明"
+  t.string   "onsen_area_image", comment: "温泉地画像"
+  t.timestamps
+end
+
+create_table "favorites", id: :bigint, force: :cascade do |t|
   t.bigint   "user_id"
   t.bigint   "onsen_id"
   t.timestamps
 end
 
-create_table "visit_logs", force: :cascade do |t|
+create_table "reviews", id: :bigint, force: :cascade do |t|
+  t.bigint   "user_id"
+  t.bigint   "onsen_id"
+  t.integer  "rate", null: false
+  t.text     "comment"
+  t.timestamps
+end
+
+create_table "visit_logs", id: :bigint, force: :cascade do |t|
   t.bigint   "user_id"
   t.bigint   "onsen_id"
   t.date     "visited_date", null: false
@@ -28,7 +78,7 @@ create_table "visit_logs", force: :cascade do |t|
   t.timestamps
 end
 
-create_table "wishlists", force: :cascade do |t|
+create_table "wishlists", id: :bigint, force: :cascade do |t|
   t.bigint   "user_id"
   t.bigint   "onsen_id"
   t.timestamps
