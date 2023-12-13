@@ -12,9 +12,8 @@ gem "mysql2", "~> 0.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -30,7 +29,7 @@ gem 'rack-cors'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "byebug", platforms: %i[ mri mingw x64_mingw ]
+  gem "byebug", platforms: %i[mri mingw x64_mingw]
 
   # Call 'binding.pry'
   gem "pry-byebug"
@@ -55,4 +54,3 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-
