@@ -1,0 +1,42 @@
+name: GitHubActions CI/CD
+
+on:
+  pull_request:
+
+jobs:
+  # rubocop実行
+  rubocop:
+    runs-on: ubuntu-latest
+    env:
+      API_BASE_URL: "https://api.github.com"
+      COMMON_HEADER: "Accept: application/vnd.github.v3+json"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+
+      - name: Bundle install
+        run: |
+          bundle install --without default development test --with ci --jobs 4 --retry 3
+
+      - name: Run rubocop with reviewdog
+        uses: reviewdog/action-rubocop@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          rubocop_version: gemfile
+          rubocop_extensions: rubocop-performance:gemfile rubocop-rails:gemfile
+          reporter: github-pr-review
+          filter_mode: diff_context
+          fail_on_error: true
+
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      # AssigneeはPRを作成した人を自動的に指定
+      - uses: technote-space/assign-author@v1

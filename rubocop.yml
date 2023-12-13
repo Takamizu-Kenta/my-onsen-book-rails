@@ -1,0 +1,333 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  # デフォルトで全ての設定をOFF
+  DisabledByDefault: true
+  # ルールの基準となるRuby/Railsバージョンを設定。バージョンアップに伴って変更してください
+  TargetRubyVersion: 3.2.2
+  TargetRailsVersion: 7.0.8
+  Exclude:
+  - '**/tmp/**/*'
+  - '**/templates/**/*'
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+  - 'bin/**/*'
+  - 'db/schema.rb'
+  - 'db/migrate/*'
+  NewCops: enable
+
+Performance:
+  Exclude:
+    - '**/test/**/*'
+
+Rails:
+  Enabled: true
+
+Lint:
+  Enabled: true
+
+Security:
+  Enabled: true
+
+Layout:
+  Enabled: true
+
+Style:
+  Enabled: true
+
+Bundler:
+  Enabled: true
+
+# ====== Layout系 ======
+
+# "case文を使用する際に "case/when" のインデントを合わせること
+Layout/CaseIndentation:
+  Enabled: true
+
+# コメントのインデントを揃えること
+Layout/CommentIndentation:
+  Enabled: true
+
+# else/elsifのインデントを揃えること
+Layout/ElseAlignment:
+  Enabled: true
+
+# マジックコメントの後に空行を入れること
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+# "private" などのアクセス修飾子の前後に空行を入れること
+Layout/EmptyLinesAroundAccessModifier:
+  Enabled: true
+  EnforcedStyle: around
+
+# ブロックの先頭/末尾に空行を入れないこと
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+# Classの先頭/末尾に空行を入れないこと
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+# ブロックの先頭/末尾に空行を入れないこと
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: true
+
+# ブロックの先頭/末尾に空行を入れないこと
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+# コメント記載時に # の後にスペースを含めること
+Layout/LeadingCommentSpace:
+  Enabled: true
+
+# ":" の後にスペースを含めること
+Layout/SpaceAfterColon:
+  Enabled: true
+
+# "," の後にスペースを含めること
+Layout/SpaceAfterComma:
+  Enabled: true
+
+# ";" の後にスペースを含めること
+Layout/SpaceAfterSemicolon:
+  Enabled: true
+
+# 単語や構文との間にスペースを含めること
+Layout/SpaceAroundKeyword:
+  Enabled: true
+
+# "," の前にスペースを含めないこと
+Layout/SpaceBeforeComma:
+  Enabled: true
+
+# ブロック定義の際に "{}" の前後にスペースを含めること
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+# ブロック定義の際に "{}" 内の先頭/末尾にスペースを含めること
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+  EnforcedStyleForEmptyBraces: space
+
+# ハッシュを作成する際に "{}" 内の先頭/末尾にスペースを含めること
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+# "()" 内の先頭/末尾にスペースを含めないこと
+Layout/SpaceInsideParens:
+  Enabled: true
+
+# ソースコードの末尾に不要なスペースを含めないこと
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# メソッドチェーン時の改行後のスペースを空けること
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+  SupportedStyles:
+    - indented
+    - aligned
+
+# メソッドチェーンの改行時は、メソッド名と同じ行にピリオドを入れること
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+# 文字列内の保管式の前後にスペースを挿入すること(無効化)
+Layout/SpaceInsideStringInterpolation:
+  Enabled: false
+
+# ====== Style系 ======
+
+# ハッシュを作成する際に { :a => :b } ではなく { a: :b } を使用すること
+Style/HashSyntax:
+  Enabled: true
+  EnforcedStyle: ruby19
+  Exclude:
+    - 'db/migrate/*'
+
+# 引数を取らないメソッドに "()" を付けないこと
+Style/DefWithParentheses:
+  Enabled: true
+
+# if や while の条件文を "()" で囲わないこと
+Style/ParenthesesAroundCondition:
+  Enabled: true
+
+# 複数の値の return を許容すること
+Style/RedundantReturn:
+  Enabled: false
+  AllowMultipleReturnValues: true
+
+# 正規表現内での不要なエスケープを使用しないこと
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+# IPアドレスをハードコードしないこと
+Style/IpAddresses:
+  Description: Don't include literal IP addresses in code.
+  Enabled: true
+  AllowedAddresses:
+    - "::"
+
+# 否定形の代わりにガード説を使用すること(無効化)
+Style/GuardClause:
+  Enabled: false
+
+# 否定形の条件式を避けること(無効化)
+Style/NegatedIf:
+  Enabled: false
+
+# シンボル記法に置き換えられるものは置き換えること(無効化)
+Style/SymbolProc:
+  Enabled: false
+
+# 長さが0のメソッドに対してはエイリアスを使用すること(無効化)
+# ex) hoge.length == 0 -> hoge.empty?
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+# 変数展開や文字列中にシングルクォートを含む場合など、特別な理由がなくダブルクォートを使っていないこと(無効化)
+Style/StringLiterals:
+  Enabled: false
+
+# frozen_string_literal: trueマジックコメントを記述すること(無効化)
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# コメントは英語で記述すること(無効化)
+Style/AsciiComments:
+  Enabled: false
+
+# 条件式内での同一変数への異なる値の割り当てを避け、代入を条件式の外に移動させること(無効化)
+Style/ConditionalAssignment:
+  Enabled: false
+
+# クラスとモジュールの定義スタイルを制約する(無効化)
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# classとmoduleのトップレベルにドキュメントが設置されていること(無効化)
+Style/Documentation:
+  Enabled: false
+
+# 文字列配列の記法を制約する
+Style/WordArray:
+  Enabled: false
+
+# 文字列配列の記法を制約する
+Style/SymbolArray:
+  Enabled: false
+
+# ifの中身が1行の場合は後置ifまたは&&/||を使用すること
+Style/IfUnlessModifier:
+  Enabled: false
+
+# raiseの書き方の制約する(無効化)
+Style/RaiseArgs:
+  Enabled: false
+
+# 文字列連結の際は、変数展開や式展開を用いる方法を優先すること(無効化)
+# issueなどで必要性の議論が一部されていたりする関係で、一旦無効化
+# https://github.com/rubocop/rubocop/issues/8470
+# https://github.com/rubocop/rubocop/issues/10685
+Style/StringConcatenation:
+  Enabled: false
+
+# 数値リテラルを3ケタ区切りで _ で区切っているか(3ケタ→6ケタへ ※10万の位から)
+Style/NumericLiterals:
+  MinDigits: 6
+
+# ロックを記述する際に使用するデリミタ（区切り文字）に関するスタイルを制約する(specのみ無効化)
+Style/BlockDelimiters:
+  AutoCorrect: false
+  Exclude:
+    - "spec/**/*"
+
+# 文字列内で不要な文字列補間を行わないこと(specのみ無効化)
+Style/RedundantInterpolation:
+  Exclude:
+    - "spec/**/*"
+
+# rescue時に明示的にStandardErrorを表記すること(しなくても良いように)
+Style/RescueStandardError:
+  EnforcedStyle: implicit
+
+# 
+Style/StringLiterals:
+  Enabled: false
+
+# ====== Lint系 ======
+
+# 同じものを require しないこと
+Lint/DuplicateRequire:
+  Enabled: true
+
+# メソッドの引数定義には "()" を使用すること
+Lint/RequireParentheses:
+  Enabled: true
+
+# 文字列に対して to_s を呼ばないこと
+Lint/RedundantStringCoercion:
+  Enabled: true
+
+# 使用していない変数は削除すること(無効化)
+Lint/UselessAssignment:
+  Enabled: false
+
+# 非推奨のクラスメソッドを使用しないこと(無効化)
+Lint/DeprecatedClassMethods:
+  Enabled: false
+
+# 変数の冒頭に設置するアンダースコアは、使用していない変数にのみ使用すること(無効化)
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+# ifブロック内などに同内容の記述がある場合はひとつにまとめること(無効化)
+Lint/DuplicateBranch:
+  Enabled: false
+
+Lint/SymbolConversion:
+  EnforcedStyle: consistent
+
+#ブロックの前には明示的に()を使用すること(specのみ無効化)
+# specでexpect { subject }.to change { foo } という書き方を実現したいため無効化
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+# voidコンテキストで使用される演算子、変数、リテラル、および非変化メソッドをチェックすること(無効化)
+Lint/Void:
+  Enabled: false
+
+# ====== Bundler系 ======
+
+# Gemfileをアルファベット順にソートする(無効化)
+Bundler/OrderedGems:
+  Enabled: false
+
+# ====== Rails系 ======
+
+# where内では生SQLの記述ではなく、ActiveRecordの記述方法に沿った記述にすること(無効化)
+Rails/WhereEquals:
+  Enabled: false
+
+# バリデーションをスキップする記述を避けること(無効化)
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# 知らない環境を許容しないこと
+# 使用している環境を下記に入力
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - staging
+
+# putsやprintのような出力コールは使用しないこと(無効化)
+Rails/Output:
+  Enabled: false
