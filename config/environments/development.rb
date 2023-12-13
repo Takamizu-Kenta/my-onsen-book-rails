@@ -55,6 +55,9 @@ Rails.application.configure do
 
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
+  # Use an evented file watcher to asynchronously detect changes in source code,
+  # routes, locales, etc. This feature depends on the listen gem.
+  config.file_watcher = ActiveSupport::FileUpdateChecker
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
