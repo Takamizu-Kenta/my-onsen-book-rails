@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# encoding: utf-8
 
 create_table "users", force: :cascade do |t|
   t.string   "email", null: false
