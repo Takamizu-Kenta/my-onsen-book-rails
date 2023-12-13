@@ -1,6 +1,6 @@
 class Api::V1::OnsensController < ApplicationController
   def index
-    @onsens = Onsen.all
+    @onsens = Onsen.order("RAND()").limit(6)
     render json: @onsens
   end
 
