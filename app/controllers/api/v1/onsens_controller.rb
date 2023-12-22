@@ -9,6 +9,11 @@ class Api::V1::OnsensController < ApplicationController
     render json: @onsens
   end
 
+  def show
+    @onsen = Onsen.find(params[:id])
+    render json: @onsen
+  end
+
   def create
     @onsen = Onsen.new(onsen_params)
 
