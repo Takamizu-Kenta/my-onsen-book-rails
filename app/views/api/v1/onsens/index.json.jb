@@ -1,0 +1,15 @@
+onsens = @onsens.map do |onsen|
+  {
+    id: onsen.id,
+    str_key: onsen.str_key,
+    pref: onsen.pref,
+    onsen_name: onsen.onsen_name,
+    onsen_name_kana: onsen.onsen_name_kana,
+    quality: onsen.quality,
+    effects: onsen.effects,
+    onsen_link: onsen.onsen_link,
+    description: onsen.description,
+    created_at: onsen.created_at,
+    updated_at: onsen.updated_at
+  }
+end

@@ -1,0 +1,32 @@
+facility_data = {
+  id: @facility.id,
+  onsen_id: @facility.onsen_id,
+  facility_name: @facility.facility_name,
+  facility_type: @facility.facility_type,
+  post_code: @facility.post_code,
+  pref: @facility.pref,
+  city: @facility.city,
+  address: @facility.address,
+  facility_link: @facility.facility_link,
+  description: @facility.description,
+  created_at: @facility.created_at,
+  updated_at: @facility.updated_at
+}
+
+related_onsen_data = @facility.onsen.present? ? {
+  id: @facility.onsen.id,
+  onsen_name: @facility.onsen.onsen_name,
+  onsen_name_kana: @facility.onsen.onsen_name_kana,
+  pref: @facility.onsen.pref,
+  quality: @facility.onsen.quality,
+  effects: @facility.onsen.effects,
+  onsen_link: @facility.onsen.onsen_link,
+  description: @facility.onsen.description,
+  created_at: @facility.onsen.created_at,
+  updated_at: @facility.onsen.updated_at
+} : nil
+
+{
+  facility: facility_data,
+  related_onsen: related_onsen_data
+}
