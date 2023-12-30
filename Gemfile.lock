@@ -46,6 +46,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.2.1)
+      activesupport (>= 5.0.0)
+    active_yaml (0.0.1)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -227,6 +230,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_hash
+  active_yaml
   annotate
   better_errors
   binding_of_caller
