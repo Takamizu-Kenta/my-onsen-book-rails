@@ -13,7 +13,8 @@ facility_data = {
   updated_at: @facility.updated_at
 }
 
-related_onsen_data = @facility.onsen.present? ? {
+related_onsen_data = if @facility.onsen.present?
+  {
   id: @facility.onsen.id,
   onsen_name: @facility.onsen.onsen_name,
   onsen_name_kana: @facility.onsen.onsen_name_kana,
@@ -24,7 +25,10 @@ related_onsen_data = @facility.onsen.present? ? {
   description: @facility.onsen.description,
   created_at: @facility.onsen.created_at,
   updated_at: @facility.onsen.updated_at
-} : nil
+}
+else
+  nil
+end
 
 {
   facility: facility_data,
