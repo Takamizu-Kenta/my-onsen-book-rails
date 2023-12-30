@@ -300,6 +300,10 @@ Lint/AmbiguousBlockAssociation:
 Lint/Void:
   Enabled: false
 
+# Copの無効化を行う際には、無効化理由をコメントで記載すること(無効化)
+Lint/RedundantCopDisableDirective:
+  Enabled: false
+
 # ====== Bundler系 ======
 
 # Gemfileをアルファベット順にソートする(無効化)
@@ -326,4 +330,8 @@ Rails/UnknownEnv:
 
 # putsやprintのような出力コールは使用しないこと(無効化)
 Rails/Output:
+  Enabled: false
+
+# has_manyやhas_oneのdependentオプションには :destroy を指定すること(無効化)
+Rails/HasManyOrHasOneDependent:
   Enabled: false

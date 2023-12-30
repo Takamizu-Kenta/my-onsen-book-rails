@@ -46,6 +46,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_hash (3.2.1)
+      activesupport (>= 5.0.0)
+    active_yaml (0.0.1)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -120,6 +123,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    miyabi (0.3.0)
+      nokogiri (~> 1.14)
     msgpack (1.7.2)
     mysql2 (0.5.5)
     net-imap (0.4.0)
@@ -133,6 +138,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     parallel (1.23.0)
     parser (3.2.2.4)
@@ -227,6 +234,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_hash
+  active_yaml
   annotate
   better_errors
   binding_of_caller
@@ -234,6 +243,7 @@ DEPENDENCIES
   byebug
   dotenv-rails
   letter_opener_web
+  miyabi
   mysql2 (~> 0.5)
   pry-byebug
   pry-rails
