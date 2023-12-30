@@ -41,6 +41,6 @@ class Api::V1::OnsensController < ApplicationController
 
   def onsen_params
     params.require(:onsen)
-          .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link,:description)
+    .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link, :description)
   end
 end
