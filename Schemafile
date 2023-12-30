@@ -22,7 +22,7 @@ create_table "facilities", id: :bigint, force: :cascade do |t|
   t.string   "pref", null: false, comment: "都道府県"
   t.string   "city", null: false, comment: "市町村"
   t.string   "address", null: false, comment: "住所"
-  t.string   "facility_url", comment: "施設URL"
+  t.string   "facility_link", comment: "施設URL"
   t.text     "description", comment: "説明"
   t.timestamps
 end
