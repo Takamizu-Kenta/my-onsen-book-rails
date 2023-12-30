@@ -13,21 +13,20 @@ facility_data = {
   updated_at: @facility.updated_at
 }
 
-related_onsen_data = if @facility.onsen.present?
+related_onsen_data =
+if @facility.onsen.present?
   {
-  id: @facility.onsen.id,
-  onsen_name: @facility.onsen.onsen_name,
-  onsen_name_kana: @facility.onsen.onsen_name_kana,
-  pref: @facility.onsen.pref,
-  quality: @facility.onsen.quality,
-  effects: @facility.onsen.effects,
-  onsen_link: @facility.onsen.onsen_link,
-  description: @facility.onsen.description,
-  created_at: @facility.onsen.created_at,
-  updated_at: @facility.onsen.updated_at
-}
-else
-  nil
+    id: @facility.onsen.id,
+    onsen_name: @facility.onsen.onsen_name,
+    onsen_name_kana: @facility.onsen.onsen_name_kana,
+    pref: @facility.onsen.pref,
+    quality: @facility.onsen.quality,
+    effects: @facility.onsen.effects,
+    onsen_link: @facility.onsen.onsen_link,
+    description: @facility.onsen.description,
+    created_at: @facility.onsen.created_at,
+    updated_at: @facility.onsen.updated_at
+  }
 end
 
 {
