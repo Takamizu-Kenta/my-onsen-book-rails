@@ -1,12 +1,14 @@
 class Onsen < ApplicationRecord
   before_validation :set_str_key, :set_prefecture
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   has_many :facilities, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
-  belongs_to :prefecture
+  belongs_to_active_hash :prefecture
 
   validates :str_key, presence: true, uniqueness: { case_sensitive: false }
 
