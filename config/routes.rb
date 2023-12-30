@@ -11,6 +11,7 @@ Rails.application.routes.draw do
           get 'all'
         end
       end
+      resources :prefectures, only: [:index, :show, :create, :update, :destroy]
     end
   end
 end

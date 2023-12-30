@@ -18,7 +18,7 @@ class Api::V1::OnsensController < ApplicationController
     @onsen = Onsen.new(onsen_params)
 
     if @onsen.save
-      render json: @onsen, status: :created, location: @onsen
+      render json: @onsen, status: :created
     else
       render json: @onsen.errors, status: :unprocessable_entity
     end
@@ -35,5 +35,11 @@ class Api::V1::OnsensController < ApplicationController
   def destroy
     @onsen.destroy
     head :no_content
+  end
+
+  private
+
+  def onsen_params
+    params.require(:onsen).permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link ,:description)
   end
 end
