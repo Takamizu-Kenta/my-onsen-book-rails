@@ -5,6 +5,8 @@ class Prefecture < ActiveYaml::Base
   set_root_path "config/active_hash"
   set_filename "prefecture"
 
-  has_many :onsens
+  # rubocop:disable Rails/HasManyOrHasOneDependent
+  has_many :onsens, dependent: :destroy
   has_many :facilities, through: :onsens
+  # rubocop:enable Rails/HasManyOrHasOneDependent
 end
