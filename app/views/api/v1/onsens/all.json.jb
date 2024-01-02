@@ -7,7 +7,7 @@ onsens = @onsens.map do |onsen|
     onsen_name_kana: onsen.onsen_name_kana,
     quality: onsen.quality,
     effects: onsen.effects,
-    description: onsen.description,
+    onsen_description: onsen.onsen_description,
     created_at: onsen.created_at,
     updated_at: onsen.updated_at
   }

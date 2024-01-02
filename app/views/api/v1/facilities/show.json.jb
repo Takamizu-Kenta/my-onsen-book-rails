@@ -2,13 +2,14 @@ facility_data = {
   id: @facility.id,
   onsen_id: @facility.onsen_id,
   facility_name: @facility.facility_name,
-  facility_type: @facility.facility_type,
+  facility_name_kana: @facility.facility_name_kana,
+  facility_type: @facility.facility_type.name,
   post_code: @facility.post_code,
   pref: @facility.pref,
   city: @facility.city,
   address: @facility.address,
   facility_link: @facility.facility_link,
-  description: @facility.description,
+  facility_description: @facility.facility_description,
   created_at: @facility.created_at,
   updated_at: @facility.updated_at
 }
@@ -23,7 +24,7 @@ related_onsen_data =
       quality: @facility.onsen.quality,
       effects: @facility.onsen.effects,
       onsen_link: @facility.onsen.onsen_link,
-      description: @facility.onsen.description,
+      onsen_description: @facility.onsen.onsen_description,
       created_at: @facility.onsen.created_at,
       updated_at: @facility.onsen.updated_at
     }

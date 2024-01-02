@@ -1,0 +1,9 @@
+- id: 1
+  str_key: "hotel"
+  name: "ホテル"
+- id: 2
+  str_key: "jp-inn"
+  name: "旅館"
+- id: 3
+  str_key: "day-use"
+  name: "日帰り温泉"

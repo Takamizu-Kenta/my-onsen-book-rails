@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
       resources :facilities, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
       resources :prefectures, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
+      resources :facility_types, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
     end
   end
 end
