@@ -38,6 +38,18 @@ class Api::V1::FacilitiesController < ApplicationController
 
   def facility_params
     params.require(:facility)
-      .permit(:onsen_id, :facility_type_id, :facility_name, :facility_name_kana, :facility_type, :post_code, :pref, :city, :address, :facility_link, :facility_description)
+      .permit(
+        :onsen_id,
+        :facility_type_id
+        :facility_name,
+        :facility_name_kana,
+        :facility_type,
+        :post_code,
+        :pref,
+        :city,
+        :address,
+        :facility_link,
+        :facility_description
+      )
   end
 end
