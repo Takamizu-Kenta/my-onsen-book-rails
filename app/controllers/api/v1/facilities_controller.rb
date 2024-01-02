@@ -15,7 +15,7 @@ class Api::V1::FacilitiesController < ApplicationController
     @facility = Facility.new(facility_params)
 
     if @facility.save
-      render json: @facility, status: :created, location: @facility
+      render json: @facility, status: :created
     else
       render json: @facility.errors, status: :unprocessable_entity
     end
@@ -32,5 +32,12 @@ class Api::V1::FacilitiesController < ApplicationController
   def destroy
     @facility.destroy
     head :no_content
+  end
+
+  private
+
+  def facility_params
+    params.require(:facility)
+      .permit(:onsen_id, :facility_type_id, :facility_name, :facility_name_kana, :facility_type, :post_code, :pref, :city, :address, :facility_link, :facility_description)
   end
 end

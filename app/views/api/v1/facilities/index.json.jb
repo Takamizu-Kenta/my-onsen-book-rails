@@ -4,13 +4,14 @@ facilities = @facilities.map do |facility|
     onsen_id: facility.onsen_id,
     onsen_name: facility.onsen.onsen_name,
     facility_name: facility.facility_name,
+    facility_name_kana: facility.facility_name_kana,
     facility_type: facility.facility_type,
     post_code: facility.post_code,
     pref: facility.pref,
     city: facility.city,
     address: facility.address,
     facility_link: facility.facility_link,
-    description: facility.description,
+    facility_description: facility.facility_description,
     created_at: facility.created_at,
     updated_at: facility.updated_at
   }
