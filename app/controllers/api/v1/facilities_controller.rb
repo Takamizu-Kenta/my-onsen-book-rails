@@ -40,7 +40,7 @@ class Api::V1::FacilitiesController < ApplicationController
     params.require(:facility)
       .permit(
         :onsen_id,
-        :facility_type_id
+        :facility_type_id,
         :facility_name,
         :facility_name_kana,
         :facility_type,
