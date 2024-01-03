@@ -10,7 +10,12 @@ class Facility < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
-  validates :facility_name, presence: true
+  validates :facility_name, presence: true, uniqueness: { message: "施設名の値が重複しているため、登録できません" }
+  validates :facility_name_kana, presence: true
+  validates :pref, presence: true
+  validates :address, presence: true
+  validates :facility_link, presence: true
+  validates :facility_description, presence: true
 
   def set_prefecture
     self.pref = Prefecture.find_by(id: pref).name
