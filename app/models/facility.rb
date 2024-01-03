@@ -10,7 +10,7 @@ class Facility < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
-  validates :facility_name, presence: true, uniqueness: { message: "施設名の値が重複しているため、登録できません" }
+  validates :facility_name, presence: true, uniqueness: { message: "の値が重複しているため、登録できません" }
   validates :facility_name_kana, presence: true
   validates :pref, presence: true
   validates :address, presence: true

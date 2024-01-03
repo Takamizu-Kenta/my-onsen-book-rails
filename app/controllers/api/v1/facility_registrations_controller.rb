@@ -24,7 +24,7 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
 
     head :ok
   rescue => e
-    render json: {message: e.message, status: 422 }, status: :unprocessable_entity
+    render json: { message: e.message, status: 422 }, status: :unprocessable_entity
   end
 
   private

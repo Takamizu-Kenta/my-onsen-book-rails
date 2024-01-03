@@ -1,0 +1,54 @@
+ja:
+  facility:
+    facility_name: 施設名
+    facility_name_kana: 施設名かな
+  onsen:
+    onsen_name: 温泉名
+    onsen_name_kana: 温泉名かな
+    onsen_type: 泉質
+    # のちのち追加しようか。。
+    # onsen_type_1: 塩化物温泉
+    # onsen_type_2: 泉質2
+    # onsen_type_3: 泉質3
+    # onsen_type_4: 泉質4
+    # onsen_type_5: 泉質5
+    # onsen_type_6: 泉質6
+    # onsen_type_7: 泉質7
+    # onsen_type_8: 泉質8
+    # onsen_type_9: 泉質9
+    # onsen_type_10: 泉質10
+    # onsen_type_11: 泉質11
+    # onsen_type_12: 泉質12
+    # onsen_type_13: 泉質13
+    # onsen_type_14: 泉質14
+    # onsen_type_15: 泉質15
+    # onsen_type_16: 泉質16
+    # onsen_type_17: 泉質17
+    # onsen_type_18: 泉質18
+    # onsen_type_19: 泉質19
+    # onsen_type_20: 泉質20
+    # onsen_type_21: 泉質21
+    # onsen_type_22: 泉質22
+    # onsen_type_23: 泉質23
+    # onsen_type_24: 泉質24
+    # onsen_type_25: 泉質25
+    # onsen_type_26: 泉質26
+    # onsen_type_27: 泉質27
+    # onsen_type_28: 泉質28
+    # onsen_type_29: 泉質29
+    # onsen_type_30: 泉質30
+    # onsen_type_31: 泉質31
+    # onsen_type_32: 泉質32
+    # onsen_type_33: 泉質33
+    # onsen_type_34: 泉質34
+    # onsen_type_35: 泉質35
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      short: "%y/%m/%d"
