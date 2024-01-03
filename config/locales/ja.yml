@@ -1,5 +1,6 @@
 ja:
   facility:
+    conflict: "施設名の値が重複しているため、登録できません"
     facility_name: 施設名
     facility_name_kana: 施設名かな
   onsen:
