@@ -16,6 +16,7 @@ class Facility < ApplicationRecord
   validates :address, presence: true
   validates :facility_link, presence: true
   validates :facility_description, presence: true
+  validates :facility_image, presence: true
 
   def set_prefecture
     self.pref = Prefecture.find_by(id: pref).name

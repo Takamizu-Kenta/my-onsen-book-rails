@@ -10,6 +10,7 @@ facility_data = {
   address: @facility.address,
   facility_link: @facility.facility_link,
   facility_description: @facility.facility_description,
+  facility_image: @facility.facility_image,
   created_at: @facility.created_at,
   updated_at: @facility.updated_at
 }
@@ -25,6 +26,7 @@ related_onsen_data =
       effects: @facility.onsen.effects,
       onsen_link: @facility.onsen.onsen_link,
       onsen_description: @facility.onsen.onsen_description,
+      onsen_image: @facility.onsen.onsen_image,
       created_at: @facility.onsen.created_at,
       updated_at: @facility.onsen.updated_at
     }

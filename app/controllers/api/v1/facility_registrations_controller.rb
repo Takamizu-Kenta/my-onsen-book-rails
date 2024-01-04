@@ -9,9 +9,20 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
       if onsen.persisted? || facility.persisted?
         on_conflict = true
       else
+        if params[:onsen][:onsen_image].present?
+          uploaded_file = params[:onsen][:onsen_image]
+          cloudinary_response = upload_image_to_cloudinary(uploaded_file)
+          params[:onsen][:onsen_image] = cloudinary_response
+        end
+
         onsen.assign_attributes(onsen_params)
         onsen.save!
 
+        if params[:facility][:facility_image].present?
+          uploaded_file = params[:facility][:facility_image]
+          cloudinary_response = upload_image_to_cloudinary(uploaded_file)
+          params[:facility][:facility_image] = cloudinary_response
+        end
         facility.assign_attributes(facility_params.merge(onsen_id: onsen.id))
         facility.save!
       end
@@ -29,9 +40,21 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
 
   private
 
+  def upload_image_to_cloudinary(image)
+    res = Cloudinary::Uploader.upload(
+      image.tempfile.path,
+      if params[:onsen][:onsen_image].present?
+        { folder: 'onsen_images' }
+      else
+        { folder: 'facility_images' }
+      end
+    )
+    res['secure_url']
+  end
+
   def onsen_params
     params.require(:onsen)
-      .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link, :onsen_description)
+      .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link, :onsen_image, :onsen_description)
   end
 
   def facility_params
@@ -45,6 +68,7 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
         :city,
         :address,
         :facility_link,
+        :facility_image,
         :facility_description
       )
   end
