@@ -54,7 +54,17 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
 
   def onsen_params
     params.require(:onsen)
-      .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link, :onsen_image, :onsen_description)
+      .permit(
+        :str_key,
+        :pref,
+        :onsen_name,
+        :onsen_name_kana,
+        :quality,
+        :effects,
+        :onsen_link,
+        :onsen_image,
+        :onsen_description
+      )
   end
 
   def facility_params
