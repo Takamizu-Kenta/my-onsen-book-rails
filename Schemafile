@@ -26,6 +26,7 @@ create_table "facilities", id: :bigint, force: :cascade do |t|
   t.string   "address", null: false, comment: "住所"
   t.string   "facility_link", comment: "施設URL"
   t.text     "facility_description", comment: "説明"
+  t.string   "facility_image", comment: "施設画像"
   t.timestamps
 end
 
@@ -38,9 +39,9 @@ create_table "onsens", id: :bigint, force: :cascade do |t|
   t.string   "effects", null: false, comment: "効能"
   t.string   "onsen_area_name", comment: "温泉地名(温泉郷)"
   t.string   "onsen_area_name_kana", comment: "温泉地名カナ"
-  t.string   "onsen_area_image", comment: "温泉地画像"
   t.string   "onsen_link", comment: "温泉URL"
   t.text     "onsen_description", null: false, comment: "説明"
+  t.string   "onsen_image", comment: "温泉画像"
   t.timestamps
 end
 

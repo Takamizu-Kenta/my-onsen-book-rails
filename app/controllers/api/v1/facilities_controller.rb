@@ -12,6 +12,12 @@ class Api::V1::FacilitiesController < ApplicationController
   end
 
   def create
+    if params[:facility][:facility_image].present?
+      uploaded_file = params[:facility][:facility_image]
+      cloudinary_response = upload_image_to_cloudinary(uploaded_file)
+      params[:facility][:facility_image] = cloudinary_response
+    end
+
     @facility = Facility.new(facility_params)
 
     if @facility.save
@@ -36,6 +42,14 @@ class Api::V1::FacilitiesController < ApplicationController
 
   private
 
+  def upload_image_to_cloudinary(image)
+    res = Cloudinary::Uploader.upload(
+      image.tempfile.path,
+      folder: 'facility_images'
+    )
+    res['secure_url']
+  end
+
   def facility_params
     params.require(:facility)
       .permit(
@@ -49,6 +63,7 @@ class Api::V1::FacilitiesController < ApplicationController
         :city,
         :address,
         :facility_link,
+        :facility_image,
         :facility_description
       )
   end

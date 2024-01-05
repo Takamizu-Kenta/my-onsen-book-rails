@@ -12,6 +12,12 @@ class Api::V1::OnsensController < ApplicationController
   end
 
   def create
+    if params[:onsen][:onsen_image].present?
+      uploaded_file = params[:onsen][:onsen_image]
+      cloudinary_response = upload_image_to_cloudinary(uploaded_file)
+      params[:onsen][:onsen_image] = cloudinary_response
+    end
+
     @onsen = Onsen.new(onsen_params)
 
     if @onsen.save
@@ -36,8 +42,26 @@ class Api::V1::OnsensController < ApplicationController
 
   private
 
+  def upload_image_to_cloudinary(image)
+    res = Cloudinary::Uploader.upload(
+      image.tempfile.path,
+      folder: 'onsen_images'
+    )
+    res['secure_url']
+  end
+
   def onsen_params
     params.require(:onsen)
-      .permit(:str_key, :pref, :onsen_name, :onsen_name_kana, :quality, :effects, :onsen_link, :onsen_description)
+      .permit(
+        :str_key,
+        :pref,
+        :onsen_name,
+        :onsen_name_kana,
+        :quality,
+        :effects,
+        :onsen_link,
+        :onsen_image,
+        :onsen_description
+      )
   end
 end

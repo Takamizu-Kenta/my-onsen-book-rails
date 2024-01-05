@@ -11,6 +11,7 @@ class Onsen < ApplicationRecord
   belongs_to_active_hash :prefecture
 
   validates :str_key, presence: true, uniqueness: { case_sensitive: false }
+  validates :onsen_image, presence: true
 
   def set_str_key
     self.str_key = onsen_name_kana.to_roman.gsub("onsen", "")

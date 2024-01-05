@@ -17,7 +17,6 @@ services:
       - my_onsen_book_network
 
   my-onsen-book-rails:
-    tty: true
     depends_on:
       - my-onsen-book-db
     image: my-onsen-book-rails
@@ -30,6 +29,8 @@ services:
     volumes:
       - .:/my-onsen-book-rails
     command: bash -c "bundle install && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    stdin_open: true
+    tty: true
     networks:
       - my_onsen_book_network
 
