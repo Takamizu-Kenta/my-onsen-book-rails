@@ -48,6 +48,11 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_hash (3.2.1)
       activesupport (>= 5.0.0)
+    active_model_serializers (0.10.14)
+      actionpack (>= 4.1)
+      activemodel (>= 4.1)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     active_yaml (0.0.1)
     activejob (7.0.8)
       activesupport (= 7.0.8)
@@ -76,6 +81,7 @@ GEM
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
     aws_cf_signer (0.1.3)
+    bcrypt (3.1.20)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -93,6 +99,8 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
+    case_transform (0.2)
+      activesupport
     cloudinary (1.28.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -101,6 +109,18 @@ GEM
     crass (1.0.6)
     date (3.3.3)
     debug_inspector (1.1.0)
+    devise (4.9.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    devise-i18n (1.12.0)
+      devise (>= 4.9.0)
+    devise_token_auth (1.2.2)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 7.1)
     diffy (3.4.2)
     domain_name (0.6.20231109)
     dotenv (2.8.1)
@@ -121,6 +141,7 @@ GEM
       ruby-vips (>= 2.0.17, < 3)
     jb (0.8.2)
     json (2.6.3)
+    jsonapi-renderer (0.2.2)
     language_server-protocol (3.17.0.3)
     launchy (2.5.2)
       addressable (~> 2.8)
@@ -166,6 +187,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -221,6 +243,9 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.8.2)
+    responders (3.1.1)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -260,6 +285,8 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -271,6 +298,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  active_model_serializers
   active_yaml
   annotate
   better_errors
@@ -279,6 +307,9 @@ DEPENDENCIES
   byebug
   carrierwave
   cloudinary
+  devise
+  devise-i18n
+  devise_token_auth
   dotenv-rails
   jb
   letter_opener_web
