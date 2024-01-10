@@ -18,10 +18,18 @@ class Onsen < ApplicationRecord
   end
 
   def set_prefecture
-    self.pref = Prefecture.find_by(id: pref).name
+    self.pref = Prefecture.find_by(id: pref)&.name
   end
 
   def is_owner(user)
     return my_onsens.where(user_id: user.id).exists?
   end
+
+  scope :by_name, -> (name) {
+    where("onsen_name LIKE ?", "%#{name}%") if name.present?
+  }
+
+  scope :by_prefecture_id, -> (prefecture_id) {
+    where(pref: Prefecture.find_by(id: prefecture_id)&.name) if prefecture_id.present?
+  }
 end

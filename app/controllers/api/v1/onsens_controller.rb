@@ -6,7 +6,7 @@ class Api::V1::OnsensController < ApplicationController
   end
 
   def all
-    @onsens = Onsen.includes(:my_onsens).all
+    @onsens = Onsen.includes(:my_onsens).by_name(params[:body][:name]).by_prefecture_id(params[:body][:prefecture_id]).all
   end
 
   def show
@@ -55,7 +55,7 @@ class Api::V1::OnsensController < ApplicationController
   end
 
   def my_onsen_book
-    @onsens = current_api_v1_user.my_onsen_books
+    @onsens = current_api_v1_user.my_onsen_books.by_name(params[:body][:name]).by_prefecture_id(params[:body][:prefecture_id])
   end
 
   def destroy

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
       resources :onsens, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json } do
         collection do
-          get 'all'
-          get 'my_onsen_book'
+          post 'all'
+          post 'my_onsen_book'
         end
 
         member do
