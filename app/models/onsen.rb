@@ -22,14 +22,14 @@ class Onsen < ApplicationRecord
   end
 
   def is_owner(user)
-    return my_onsens.where(user_id: user.id).exists?
+    return my_onsens.exists?(user_id: user.id)
   end
 
-  scope :by_name, -> (name) {
+  scope :by_name, lambda { |name|
     where("onsen_name LIKE ?", "%#{name}%") if name.present?
   }
 
-  scope :by_prefecture_id, -> (prefecture_id) {
+  scope :by_prefecture_id, lambda { |prefecture_id|
     where(pref: Prefecture.find_by(id: prefecture_id)&.name) if prefecture_id.present?
   }
 end

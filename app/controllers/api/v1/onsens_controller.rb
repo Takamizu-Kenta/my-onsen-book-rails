@@ -6,7 +6,10 @@ class Api::V1::OnsensController < ApplicationController
   end
 
   def all
-    @onsens = Onsen.includes(:my_onsens).by_name(params[:body][:name]).by_prefecture_id(params[:body][:prefecture_id]).all
+    @onsens = Onsen.includes(:my_onsens)
+      .by_name(params[:body][:name])
+      .by_prefecture_id(params[:body][:prefecture_id])
+      .all
   end
 
   def show
@@ -54,13 +57,13 @@ class Api::V1::OnsensController < ApplicationController
       my_onsen.save!
       return render json: { is_owner: true }, status: :created
     end
-
   rescue => e
     render json: { message: e.message, status: 422 }, status: :unprocessable_entity
   end
 
   def my_onsen_book
-    @onsens = current_api_v1_user.my_onsen_books.by_name(params[:body][:name]).by_prefecture_id(params[:body][:prefecture_id])
+    @onsens = current_api_v1_user.my_onsen_books.by_name(params[:body][:name])
+      .by_prefecture_id(params[:body][:prefecture_id])
   end
 
   def destroy
