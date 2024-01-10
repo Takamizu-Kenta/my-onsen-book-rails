@@ -5,8 +5,8 @@ class Onsen < ApplicationRecord
 
   has_many :facilities, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :favorite_users, through: :favorites, source: :user
+  has_many :my_onsens, dependent: :destroy
+  has_many :owner_users, through: :my_onsens, source: :user
 
   belongs_to_active_hash :prefecture
 
@@ -19,5 +19,9 @@ class Onsen < ApplicationRecord
 
   def set_prefecture
     self.pref = Prefecture.find_by(id: pref).name
+  end
+
+  def is_owner(user)
+    return my_onsens.where(user_id: user.id).exists?
   end
 end

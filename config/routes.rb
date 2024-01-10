@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       resources :onsens, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json } do
         collection do
           get 'all'
+          get 'my_onsen_book'
+        end
+
+        member do
+          post 'toggle_my_onsen'
         end
       end
       resources :facilities, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }

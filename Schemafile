@@ -77,10 +77,12 @@ create_table "onsen_areas", id: :bigint, force: :cascade do |t|
   t.timestamps
 end
 
-create_table "favorites", id: :bigint, force: :cascade do |t|
+create_table "my_onsens", id: :bigint, force: :cascade do |t|
   t.bigint   "user_id"
   t.bigint   "onsen_id"
   t.timestamps
+
+  t.index ["user_id", "onsen_id"], name: "index_my_onsens_on_user_id_and_onsen_id", unique: true
 end
 
 create_table "reviews", id: :bigint, force: :cascade do |t|

@@ -1,13 +1,16 @@
 class Api::V1::OnsensController < ApplicationController
+  before_action :authenticate_api_v1_user!, only: [:toggle_my_onsen, :my_onsen_book]
+
   def index
-    @onsens = Onsen.order("RAND()").limit(8)
+    @onsens = Onsen.includes(:my_onsens).order("RAND()").limit(8)
   end
 
   def all
-    @onsens = Onsen.all
+    @onsens = Onsen.includes(:my_onsens).all
   end
 
   def show
+    @current_user = current_api_v1_user
     @onsen = Onsen.find(params[:id])
   end
 
@@ -33,6 +36,26 @@ class Api::V1::OnsensController < ApplicationController
     else
       render json: @onsen.errors, status: :unprocessable_entity
     end
+  end
+
+  def toggle_my_onsen
+    onsen = Onsen.find(params[:id])
+    my_onsen = current_api_v1_user.my_onsens.find_or_initialize_by(onsen_id: onsen.id)
+
+    if my_onsen.persisted?
+      my_onsen.destroy!
+      return render json: { is_owner: false }, status: :ok
+    else
+      my_onsen.save!
+      return render json: { is_owner: true }, status: :created
+    end
+
+  rescue => e
+    render json: { message: e.message, status: 422 }, status: :unprocessable_entity
+  end
+
+  def my_onsen_book
+    @onsens = current_api_v1_user.my_onsen_books
   end
 
   def destroy
