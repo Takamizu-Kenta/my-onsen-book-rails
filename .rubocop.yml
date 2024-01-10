@@ -327,6 +327,7 @@ Rails/UnknownEnv:
     - production
     - development
     - staging
+    - test
 
 # putsやprintのような出力コールは使用しないこと(無効化)
 Rails/Output:
