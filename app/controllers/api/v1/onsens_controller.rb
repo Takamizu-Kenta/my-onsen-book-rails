@@ -24,6 +24,11 @@ class Api::V1::OnsensController < ApplicationController
     @onsen = Onsen.new(onsen_params)
 
     if @onsen.save
+      if ActiveRecord::Type::Boolean.new.cast(params[:onsen][:add_my_onsen_book])
+        my_onsen = current_api_v1_user.my_onsens.find_or_initialize_by(onsen_id: @onsen.id)
+        my_onsen.save!
+      end
+
       render json: @onsen, status: :created
     else
       render json: @onsen.errors, status: :unprocessable_entity
