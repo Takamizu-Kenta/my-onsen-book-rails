@@ -7,4 +7,7 @@ class User < ActiveRecord::Base # rubocop:disable Rails/ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   include DeviseTokenAuth::Concerns::User
+
+  has_many :my_onsens
+  has_many :my_onsen_books, through: :my_onsens, source: :onsen
 end
