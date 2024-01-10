@@ -16,7 +16,13 @@ class Api::V1::FacilityRegistrationsController < ApplicationController
         end
 
         onsen.assign_attributes(onsen_params)
+
         onsen.save!
+
+        if ActiveRecord::Type::Boolean.new.cast(params[:onsen][:add_my_onsen_book])
+          my_onsen = current_api_v1_user.my_onsens.find_or_initialize_by(onsen_id: onsen.id)
+          my_onsen.save!
+        end
 
         if params[:facility][:facility_image].present?
           uploaded_file = params[:facility][:facility_image]
