@@ -14,9 +14,7 @@ Rails.application.routes.draw do
       resources :prefectures, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
       resources :facility_types, only: [:index, :show, :create, :update, :destroy], defaults: { format: :json }
 
-      mount_devise_token_auth_for 'User', at: 'auth', controllers: {
-        sessions: 'api/v1/auth/sessions'
-      }
+      mount_devise_token_auth_for 'User', at: 'auth'
 
       namespace :current do
         resource :user, only: [:show]
