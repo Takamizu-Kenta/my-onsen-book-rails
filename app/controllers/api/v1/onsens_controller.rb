@@ -5,6 +5,10 @@ class Api::V1::OnsensController < ApplicationController
     @onsens = Onsen.includes(:my_onsens).order("RAND()").limit(8)
   end
 
+  def latest
+    @latest_onsens = Onsen.order(created_at: :desc).limit(8)
+  end
+
   def all
     @onsens = Onsen.includes(:my_onsens)
       .by_name(params[:body][:name])

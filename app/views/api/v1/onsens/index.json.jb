@@ -9,6 +9,7 @@ onsens = @onsens.map do |onsen|
     effects: onsen.effects,
     onsen_link: onsen.onsen_link,
     onsen_description: onsen.onsen_description,
+    onsen_image: onsen.onsen_image,
     created_at: onsen.created_at,
     updated_at: onsen.updated_at
   }
