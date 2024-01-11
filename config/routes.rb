@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         collection do
           post 'all'
           post 'my_onsen_book'
+          get 'latest'
         end
 
         member do

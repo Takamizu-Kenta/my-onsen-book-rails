@@ -1,0 +1,16 @@
+latest_onsens = @latest_onsens.map do |latest_onsens|
+  {
+    id: latest_onsens.id,
+    str_key: latest_onsens.str_key,
+    pref: latest_onsens.pref,
+    onsen_name: latest_onsens.onsen_name,
+    onsen_name_kana: latest_onsens.onsen_name_kana,
+    quality: latest_onsens.quality,
+    effects: latest_onsens.effects,
+    onsen_link: latest_onsens.onsen_link,
+    onsen_description: latest_onsens.onsen_description,
+    onsen_image: latest_onsens.onsen_image,
+    created_at: latest_onsens.created_at,
+    updated_at: latest_onsens.updated_at
+  }
+end
