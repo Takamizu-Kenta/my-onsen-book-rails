@@ -1,4 +1,4 @@
-{
+onsen_data = {
   id: @onsen.id,
   str_key: @onsen.str_key,
   pref: @onsen.pref,
@@ -13,3 +13,29 @@
   created_at: @onsen.created_at,
   updated_at: @onsen.updated_at
 }
+
+related_facilities_data =
+  if @onsen.facilities.present?
+    @onsen.facilities.map do |facility|
+      {
+        id: facility.id,
+        facility_name: facility.facility_name,
+        facility_name_kana: facility.facility_name_kana,
+        facility_type: facility.facility_type.name,
+        post_code: facility.post_code,
+        pref: facility.pref,
+        city: facility.city,
+        address: facility.address,
+        facility_link: facility.facility_link,
+        facility_description: facility.facility_description,
+        facility_image: facility.facility_image,
+        created_at: facility.created_at,
+        updated_at: facility.updated_at
+      }
+    end
+  end
+
+  {
+    onsen: onsen_data,
+    related_facilities: related_facilities_data
+  }
