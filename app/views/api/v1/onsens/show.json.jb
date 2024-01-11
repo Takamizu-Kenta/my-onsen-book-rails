@@ -35,7 +35,7 @@ related_facilities_data =
     end
   end
 
-  {
-    onsen: onsen_data,
-    related_facilities: related_facilities_data
-  }
+{
+  onsen: onsen_data,
+  related_facilities: related_facilities_data
+}
